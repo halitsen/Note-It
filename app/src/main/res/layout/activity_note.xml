@@ -14,12 +14,55 @@
 
     </data>
 
-
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NoteActivity">
+    tools:context=".main.NoteActivity"
+    android:background="@color/white">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/note_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/mainPrimaryColor"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/note_list"
+        android:layout_width="match_parent"
+        android:layout_marginRight="4dp"
+        android:layout_below="@id/note_toolbar"
+        android:layout_marginLeft="4dp"
+        android:clipToPadding="false"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/empty_note_paceholder_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
+        android:minLines="3"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/darkMainPrimaryColor"
+        android:textSize="18sp"
+        android:text="@string/empty_note_placeholder_text"
+        android:layout_centerInParent="true">
+
+    </TextView>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -31,6 +74,7 @@
         android:layout_marginBottom="24dp"
         android:layout_marginRight="24dp"
         android:background="#000"
+        android:src="@drawable/ic_plus"
         app:elevation="8dp" />
 
 </RelativeLayout>

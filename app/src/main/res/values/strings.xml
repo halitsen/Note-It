@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Note It</string>
+    <string name="empty_note_placeholder_text">You don\'t have any note yet. \nUse plus (+) button below to take a note.</string>
 </resources>

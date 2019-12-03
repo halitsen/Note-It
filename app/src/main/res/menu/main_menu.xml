@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- todo ikonu ayarlar ikonu ile değiştir -->
+    <item
+        android:id="@+id/profile"
+        android:title=""
+        android:icon="@drawable/profile_icon"
+        app:showAsAction="ifRoom">
+    </item>
+</menu>
