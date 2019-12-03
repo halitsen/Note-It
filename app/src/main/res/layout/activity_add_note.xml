@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="addNoteViewModel"
+            type="halit.sen.noteit.addNote.AddNoteViewModel" />
+
+    </data>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".addNote.AddNoteActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/add_note_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/mainPrimaryColor"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/add_note_back_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_back" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <Button
+        android:id="@+id/add_note_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Note"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+    </Button>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/add_note_toolbar">
+
+        <RelativeLayout
+            android:id="@+id/time_layout"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_alignParentTop="true">
+
+            <TextView
+                android:id="@+id/note_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:textSize="14sp"
+                android:textColor="#65000000"
+                android:text="@{addNoteViewModel.curentTime}">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/lock_image"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_lock_open">
+
+            </ImageView>
+
+
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/note_description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:layout_below="@id/time_layout"
+            android:layout_marginTop="12dp"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:hint="Note It"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-light"
+            android:background="@null"
+            android:textColor="@color/darkMainPrimaryColor"
+            android:paddingRight="12dp"
+            android:paddingLeft="12dp"
+            android:paddingBottom="12dp">
+
+        </EditText>
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
+
+</layout>
