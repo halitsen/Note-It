@@ -1,11 +1,16 @@
 package halit.sen.noteit.setting
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import halit.sen.noteit.R
+import halit.sen.noteit.changePassword.ChangePasswordActivity
+import halit.sen.noteit.changePassword.ChangePasswordViewModel
 import halit.sen.noteit.databinding.ActivitySettingBinding
+import halit.sen.noteit.main.NoteViewModel
+import halit.sen.noteit.main.NoteViewModelFactory
 
 class SettingActivity : AppCompatActivity() {
 
@@ -19,8 +24,12 @@ class SettingActivity : AppCompatActivity() {
         binding.settingViewModel = viewModel
         binding.setLifecycleOwner(this)
 
-        binding.addSettingBackIcon.setOnClickListener {
+        binding.settingBackIcon.setOnClickListener {
             finish()
+        }
+
+        binding.changePassLayout.setOnClickListener{
+            viewModel.onChangePassLayoutClicked()
         }
     }
 }

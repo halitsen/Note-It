@@ -61,8 +61,7 @@ class NoteActivity : AppCompatActivity() {
         })
 
         binding.fab.setOnClickListener {
-            val intent = Intent(this, AddNoteActivity::class.java)
-            startActivity(intent)
+            viewModel.onAddNoteClicked()
         }
     }
 
@@ -73,8 +72,7 @@ class NoteActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.profile){
-            val intent = Intent(this,SettingActivity::class.java)
-            startActivity(intent)
+            viewModel.onProfileClicked()
         }
         return super.onOptionsItemSelected(item)
     }

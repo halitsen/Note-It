@@ -32,7 +32,7 @@
             android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/add_setting_back_icon"
+            android:id="@+id/setting_back_icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"

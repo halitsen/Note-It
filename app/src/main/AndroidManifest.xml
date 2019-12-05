@@ -9,10 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".setting.SettingActivity"></activity>
-        <activity android:name=".addNote.AddNoteActivity">
-
-        </activity>
+        <activity android:name=".changePassword.ChangePasswordActivity"></activity>
+        <activity android:name=".setting.SettingActivity" />
+        <activity android:name=".addNote.AddNoteActivity"></activity>
         <activity android:name=".main.NoteActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
