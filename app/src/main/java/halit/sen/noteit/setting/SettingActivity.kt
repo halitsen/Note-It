@@ -27,9 +27,20 @@ class SettingActivity : AppCompatActivity() {
         binding.settingBackIcon.setOnClickListener {
             finish()
         }
-
         binding.changePassLayout.setOnClickListener{
             viewModel.onChangePassLayoutClicked()
+        }
+        binding.contactLayout.setOnClickListener {
+            viewModel.onContactClicked()
+        }
+        binding.rateLayout.setOnClickListener {
+            viewModel.onRateClicked()
+        }
+        binding.shareLayout.setOnClickListener {
+            viewModel.onShareClicked()
+        }
+        binding.donateLayout.setOnClickListener {
+            viewModel.onDonateClicked()
         }
     }
 }
