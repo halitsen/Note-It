@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import halit.sen.noteit.R
 import halit.sen.noteit.database.Note
@@ -50,6 +51,11 @@ class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder>() {
            }else{
                isNoteLockedImage.setImageResource(R.drawable.ic_lock_open)
            }
+
+           isNoteLockedImage.setOnClickListener { v ->
+               Toast.makeText(itemView.context,"Lock clicked..",Toast.LENGTH_SHORT).show()
+           }
         }
+
     }
 }
