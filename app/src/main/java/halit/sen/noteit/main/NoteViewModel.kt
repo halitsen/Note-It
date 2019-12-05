@@ -1,18 +1,19 @@
 package halit.sen.noteit.main
 
 import android.app.Application
+import android.content.Intent
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import halit.sen.noteit.addNote.AddNoteActivity
 import halit.sen.noteit.database.Note
 import halit.sen.noteit.database.NoteDao
+import halit.sen.noteit.setting.SettingActivity
 import kotlinx.coroutines.*
 
 class NoteViewModel(val database: NoteDao,
-                    application: Application) : ViewModel(){
-    //todo application kullanamazsam view model yerine android view model  extend edecem
+                    application: Application) : AndroidViewModel(application){
+    private val context = getApplication<Application>().applicationContext
+
 
     private var _allNotes: LiveData<List<Note>> = database.getAllNotes()
     val allNotes
@@ -30,5 +31,15 @@ class NoteViewModel(val database: NoteDao,
         super.onCleared()
         Log.i("NoteViewModel", "NoteViewModel destroyed.")
         viewModelJob.cancel()
+    }
+
+    fun onProfileClicked(){
+        val intent = Intent(context,SettingActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    fun onAddNoteClicked(){
+        val intent = Intent(context,AddNoteActivity::class.java)
+        context.startActivity(intent)
     }
 }
