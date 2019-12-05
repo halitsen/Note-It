@@ -69,7 +69,7 @@ class AddNoteActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.save){
             if(binding.noteDescription.text.toString().length > 0){
-                viewModel.onAddNot(binding.noteDescription.text.toString().trim())
+                viewModel.onAddNote(binding.noteDescription.text.toString().trim())
             }
             finish()
         }

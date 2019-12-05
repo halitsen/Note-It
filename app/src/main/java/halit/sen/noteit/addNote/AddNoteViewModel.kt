@@ -34,7 +34,6 @@ class AddNoteViewModel(val note: Note, val database: NoteDao, application: Appli
         return it
     }
 
-
     init {
         Log.i("AddNoteViewModel", "AddNoteViewModel Created..")
         _isNoteLocked.value = false
@@ -45,7 +44,7 @@ class AddNoteViewModel(val note: Note, val database: NoteDao, application: Appli
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
 
-    fun onAddNot(description: String) { //todo isLocked ve lastEditTime ı burada al title ı description un başından al
+    fun onAddNote(description: String) {
         //todo add mi update mi olduğuna dikkat et.. !!!
         uiScope.launch {
             val newNote = Note()

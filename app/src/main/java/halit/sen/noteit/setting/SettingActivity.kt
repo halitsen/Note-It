@@ -18,5 +18,9 @@ class SettingActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this).get(SettingViewModel::class.java)
         binding.settingViewModel = viewModel
         binding.setLifecycleOwner(this)
+
+        binding.addSettingBackIcon.setOnClickListener {
+            finish()
+        }
     }
 }
