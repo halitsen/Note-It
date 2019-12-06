@@ -9,7 +9,7 @@
     <string name="rate_us">Rate Us</string>
     <string name="donate">Donate</string>
     <string name="owner_mail">sen.halitt@gmail.com</string>
-    <string name="mailto">mailto</string>
+    <string name="mailto">mailto:</string>
     <string name="send_email">Send Email..</string>
     <string name="no_mail_client">There are no email clients installed.</string>
     <string name="share_app_url">Hey!!! Check out my app here: https://play.google.com/store/apps/details?id=com.halitsen.bitcurrency</string>

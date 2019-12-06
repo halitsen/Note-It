@@ -26,6 +26,10 @@ class AddNoteViewModel(val note: Note, val database: NoteDao, application: Appli
     val isNoteLocked: LiveData<Boolean>
         get() = _isNoteLocked
 
+    private val _editNoteDescription = MutableLiveData<String>()
+    val editNoteDescription: LiveData<String>
+    get() = _editNoteDescription
+
     val noteLockStatu = Transformations.map(isNoteLocked) {
         getLockStatu(it)
     }
@@ -38,6 +42,10 @@ class AddNoteViewModel(val note: Note, val database: NoteDao, application: Appli
         Log.i("AddNoteViewModel", "AddNoteViewModel Created..")
         _isNoteLocked.value = false
         _curentTime.value = getCurentTime(java.util.Calendar.getInstance().timeInMillis)
+        if(note.noteDescription.length>0){
+            _editNoteDescription.value = note.noteDescription
+            _isNoteLocked.value = note.noteIsLocked
+        }
     }
 
     private var viewModelJob = Job()
@@ -45,15 +53,25 @@ class AddNoteViewModel(val note: Note, val database: NoteDao, application: Appli
 
 
     fun onAddNote(description: String) {
-        //todo add mi update mi olduğuna dikkat et.. !!!
         uiScope.launch {
-            val newNote = Note()
-            newNote.noteTitle = getNoteTitleFromDescription(description)
-            newNote.noteDescription = description
-            newNote.noteIsLocked = _isNoteLocked.value!!
-            newNote.noteLastEdit = java.util.Calendar.getInstance().timeInMillis
+            note.noteTitle = getNoteTitleFromDescription(description)
+            note.noteDescription = description
+            note.noteIsLocked = _isNoteLocked.value!!
+            note.noteLastEdit = java.util.Calendar.getInstance().timeInMillis
             withContext(Dispatchers.IO) {
-                database.insert(newNote)
+                database.insert(note)
+            }
+        }
+    }
+
+    fun onUpdateNote(description: String){
+        uiScope.launch {
+            note.noteDescription = description
+            note.noteTitle = getNoteTitleFromDescription(description)
+            note.noteLastEdit = java.util.Calendar.getInstance().timeInMillis
+            note.noteIsLocked = _isNoteLocked.value!!
+            withContext(Dispatchers.IO){
+                database.update(note)
             }
         }
     }

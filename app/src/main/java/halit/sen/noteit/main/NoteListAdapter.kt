@@ -1,5 +1,6 @@
 package halit.sen.noteit.main
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import halit.sen.noteit.R
+import halit.sen.noteit.addNote.AddNoteActivity
 import halit.sen.noteit.database.Note
 import halit.sen.noteit.displayNoteInList
 import halit.sen.noteit.getCurentTime
@@ -16,17 +18,16 @@ import halit.sen.noteit.getCurentTime
 class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder>() {
 
     var data = listOf<Note>()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.note_list_item_row, parent, false)
-
-        return  ViewHolder(view)
+        return ViewHolder(view)
     }
 
     override fun getItemCount() = data.size
@@ -34,28 +35,29 @@ class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data.get(position)
         holder.bind(item)
+        holder.itemView.setOnClickListener {
+           val editNoteIntent = Intent(holder.itemView.context,AddNoteActivity::class.java)
+            editNoteIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            editNoteIntent.putExtra("note",item)
+            holder.itemView.context.startActivity(editNoteIntent)
+        }
     }
 
-    class ViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
-        val res = itemView.context.resources
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val description : TextView = itemView.findViewById(R.id.description_text)
-        val lastEdit : TextView = itemView.findViewById(R.id.last_edit_text)
+        val res = itemView.context.resources
+        val description: TextView = itemView.findViewById(R.id.description_text)
+        val lastEdit: TextView = itemView.findViewById(R.id.last_edit_text)
         val isNoteLockedImage: ImageView = itemView.findViewById(R.id.lock)
 
-       fun bind(item: Note) {
+        fun bind(item: Note) {
             description.text = displayNoteInList(item.noteDescription)
             lastEdit.text = getCurentTime(item.noteLastEdit)
-           if(item.noteIsLocked){
-               isNoteLockedImage.setImageResource(R.drawable.ic_lock_close)
-           }else{
-               isNoteLockedImage.setImageResource(R.drawable.ic_lock_open)
-           }
-
-           isNoteLockedImage.setOnClickListener { v ->
-               Toast.makeText(itemView.context,"Lock clicked..",Toast.LENGTH_SHORT).show()
-           }
+            if (item.noteIsLocked) {
+                isNoteLockedImage.setImageResource(R.drawable.ic_lock_close)
+            } else {
+                isNoteLockedImage.setImageResource(R.drawable.ic_lock_open)
+            }
         }
-
     }
 }
