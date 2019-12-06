@@ -14,6 +14,7 @@ import halit.sen.noteit.databinding.ActivityNoteBinding
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import halit.sen.noteit.R
 import halit.sen.noteit.addNote.AddNoteActivity
 import halit.sen.noteit.database.Note
@@ -23,13 +24,11 @@ import java.util.*
 
 class NoteActivity : AppCompatActivity() {
 
-
     private lateinit var binding: ActivityNoteBinding
     private lateinit var viewModel: NoteViewModel
 
     private lateinit var database: NoteDatabase
     var note: Note = Note()
-    val adapter = NoteListAdapter()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +46,9 @@ class NoteActivity : AppCompatActivity() {
         binding.noteToolbar
         setSupportActionBar(binding.noteToolbar);
         supportActionBar!!.setDisplayShowTitleEnabled(false)
+
+
+
         binding.noteList.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
@@ -63,6 +65,10 @@ class NoteActivity : AppCompatActivity() {
         binding.fab.setOnClickListener {
             viewModel.onAddNoteClicked()
         }
+
+        binding.noteList.setOnClickListener {
+            Toast.makeText(this,"item clicked",Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -76,4 +82,7 @@ class NoteActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
+
 }

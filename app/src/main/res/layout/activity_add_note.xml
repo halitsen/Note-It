@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="addNoteViewModel"
             type="halit.sen.noteit.addNote.AddNoteViewModel" />
-
     </data>
 
 <RelativeLayout
@@ -70,9 +69,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                app:fontFamily="sans-serif-light"
                 android:layout_alignParentLeft="true"
                 android:textSize="14sp"
-                android:textColor="#65000000"
+                android:textColor="@color/gray"
                 android:text="@{addNoteViewModel.curentTime}">
 
             </TextView>
@@ -86,9 +86,6 @@
                 android:src="@drawable/ic_lock_open">
 
             </ImageView>
-
-
-
         </RelativeLayout>
 
         <EditText
@@ -99,9 +96,9 @@
             android:layout_below="@id/time_layout"
             android:layout_marginTop="12dp"
             android:textCursorDrawable="@drawable/cursor_color"
-            android:hint="Note It"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-light"
+            android:hint="@string/app_name"
+            android:textSize="17sp"
+            app:fontFamily="sans-serif"
             android:background="@null"
             android:textColor="@color/darkMainPrimaryColor"
             android:paddingRight="12dp"
@@ -111,9 +108,6 @@
         </EditText>
 
     </RelativeLayout>
-
-
-
 
 </RelativeLayout>
 

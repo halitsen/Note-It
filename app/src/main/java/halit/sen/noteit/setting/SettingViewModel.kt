@@ -20,6 +20,7 @@ class SettingViewModel(application: Application) : AndroidViewModel(application)
 
     fun onContactClicked(){
         val intent = Intent(Intent.ACTION_SENDTO)
+        intent.type = (context.getString(R.string.text_plain))
         intent.data = Uri.parse(context.getString(R.string.mailto))
         intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(context.getString(R.string.owner_mail)))
         intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name))
@@ -35,7 +36,7 @@ class SettingViewModel(application: Application) : AndroidViewModel(application)
         intent.action = Intent.ACTION_SEND
         intent.putExtra(Intent.EXTRA_TEXT,
             context.getString(R.string.share_app_url))
-        intent.setType(context.getString(R.string.text_plain))
+        intent.type=(context.getString(R.string.text_plain))
         context.startActivity(intent)
     }
 
