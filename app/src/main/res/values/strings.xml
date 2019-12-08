@@ -31,4 +31,8 @@
     <string name="encyption_info">You need to create a password.  To create encrypted notes.</string>
     <string name="encrypted_notes">Encrypted Notes</string>
     <string name="wron_pass_warning">Wrong Password, please try again,,</string>
+    <string name="set_password_yet">You didn\'t set a password yet.</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="new_password_again">New Password Again</string>
 </resources>
