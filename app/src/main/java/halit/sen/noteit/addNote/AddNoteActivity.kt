@@ -1,34 +1,31 @@
 package halit.sen.noteit.addNote
 
-import android.content.Intent
-import android.graphics.drawable.Drawable
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.util.Log
+import android.text.TextUtils
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import halit.sen.noteit.R
 import halit.sen.noteit.database.Note
 import halit.sen.noteit.database.NoteDatabase
 import halit.sen.noteit.databinding.ActivityAddNoteBinding
-import halit.sen.noteit.main.NoteActivity
-import halit.sen.noteit.main.NoteViewModel
-import halit.sen.noteit.main.NoteViewModelFactory
-import halit.sen.noteit.setting.SettingActivity
-import java.nio.channels.InterruptedByTimeoutException
+import halit.sen.noteit.databinding.LockInfoDialogBinding
+import halit.sen.noteit.utils.SharedPreference
+import halit.sen.noteit.utils.openInfoDialog
 
 class AddNoteActivity : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityAddNoteBinding
+    private lateinit var dialogBinding: LockInfoDialogBinding
     private lateinit var viewModel: AddNoteViewModel
     private lateinit var database: NoteDatabase
+    private lateinit var notePreference: SharedPreference
     var note: Note = Note()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +34,6 @@ class AddNoteActivity : AppCompatActivity() {
         val application = requireNotNull(this).application
         val datasource = NoteDatabase.getInstance(application).noteDao
         val bundle: Bundle? = intent.extras
-        //todo edit note açılınca kilit kapalı olması lazım
         if (bundle != null) {
             note = bundle.getSerializable("note") as Note
         }
@@ -49,14 +45,17 @@ class AddNoteActivity : AppCompatActivity() {
         setSupportActionBar(binding.addNoteToolbar);
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
-        viewModel.editNoteDescription.observe(this, Observer {
-            binding.noteDescription.setText(it)
-        })
+         notePreference = SharedPreference(this)
         binding.addNoteBackIcon.setOnClickListener {
             finish()
         }
         binding.lockImage.setOnClickListener { image ->
-            viewModel.lockNoteClicked()
+
+            if (notePreference.getPassword() != "") {
+                viewModel.lockNoteClicked()
+            } else {
+                createLockInfoDialog()
+            }
         }
         viewModel.isNoteLocked.observe(this, Observer {
             if (it) {
@@ -87,4 +86,31 @@ class AddNoteActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    fun createLockInfoDialog() {
+        dialogBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(this),
+            R.layout.lock_info_dialog,
+            null,
+            false
+        )
+        val dialog = Dialog(this)
+        dialog.setContentView(dialogBinding.root)
+
+        dialogBinding.createPasswordText.setOnClickListener {
+            val password = dialogBinding.passEditText.text.trim().toString()
+            val passwordAgain = dialogBinding.passAgainEditText.text.trim().toString()
+            if (TextUtils.isEmpty(password) || TextUtils.isEmpty(passwordAgain)) {
+                openInfoDialog(this, getString(R.string.pass_empty_warning), getString(R.string.password))
+                return@setOnClickListener
+            } else if (!password.equals(passwordAgain)) {
+                openInfoDialog(this, getString(R.string.pass_match_warning), getString(R.string.password))
+                return@setOnClickListener
+            } else {
+                notePreference.setPassword(password)
+                openInfoDialog(this, getString(R.string.password_created), getString(R.string.password))
+            }
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
 }

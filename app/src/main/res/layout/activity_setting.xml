@@ -239,6 +239,42 @@
         </View>
 
         <RelativeLayout
+            android:id="@+id/delete_layout"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingRight="30dp"
+            android:paddingLeft="30dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_all_notes"
+                android:layout_centerVertical="true"
+                android:textSize="17sp"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/darkMainPrimaryColor"
+                app:fontFamily="sans-serif"/>
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_rubbish" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/darkMainPrimaryColor">
+        </View>
+
+        <RelativeLayout
             android:id="@+id/donate_layout"
             android:layout_width="match_parent"
             android:layout_height="80dp"
