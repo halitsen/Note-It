@@ -9,4 +9,5 @@
         android:icon="@drawable/profile_icon"
         app:showAsAction="ifRoom">
     </item>
+
 </menu>

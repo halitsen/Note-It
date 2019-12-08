@@ -1,10 +1,7 @@
 package halit.sen.noteit.main
 
-import android.content.Intent
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -14,13 +11,9 @@ import halit.sen.noteit.databinding.ActivityNoteBinding
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import halit.sen.noteit.R
-import halit.sen.noteit.addNote.AddNoteActivity
 import halit.sen.noteit.database.Note
 import halit.sen.noteit.database.NoteDatabase
-import halit.sen.noteit.setting.SettingActivity
-import java.util.*
 
 class NoteActivity : AppCompatActivity() {
 
@@ -46,8 +39,6 @@ class NoteActivity : AppCompatActivity() {
         binding.noteToolbar
         setSupportActionBar(binding.noteToolbar);
         supportActionBar!!.setDisplayShowTitleEnabled(false)
-
-
 
         binding.noteList.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

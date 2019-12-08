@@ -58,6 +58,7 @@
         android:minLines="3"
         android:fontFamily="sans-serif"
         android:textColor="@color/darkMainPrimaryColor"
+        android:visibility="gone"
         android:textSize="18sp"
         android:text="@string/empty_note_placeholder_text"
         android:layout_centerInParent="true">
@@ -72,8 +73,10 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="24dp"
+        android:textColor="@color/white"
         android:layout_marginRight="24dp"
-        android:background="#000"
+        android:background="@color/darkMainPrimaryColor"
+        android:text="@string/app_name"
         android:src="@drawable/ic_plus"
         app:elevation="8dp" />
 

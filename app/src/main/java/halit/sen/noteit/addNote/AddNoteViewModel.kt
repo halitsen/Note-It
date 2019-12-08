@@ -2,25 +2,25 @@ package halit.sen.noteit.addNote
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import halit.sen.noteit.database.Note
 import halit.sen.noteit.database.NoteDao
-import halit.sen.noteit.getCurentTime
-import halit.sen.noteit.getNoteTitleFromDescription
+import halit.sen.noteit.utils.getCurentTime
+import halit.sen.noteit.utils.getNoteTitleFromDescription
 import kotlinx.coroutines.*
+import java.util.*
 
-class AddNoteViewModel(val note: Note, val database: NoteDao, application: Application) :
-    ViewModel() {
+class AddNoteViewModel(val note: Note, val database: NoteDao, application: Application): AndroidViewModel(application) {
 
-    // todo buraya gelen note null ise yeni note, null değil ise update note...
-    // todo eklemek için geliniyorsa insert listeden nota tıklayıp geliniyorsa update olacak...
+    private val context = getApplication<Application>().applicationContext
 
     private val _curentTime = MutableLiveData<String>()
     val curentTime: LiveData<String>
         get() = _curentTime
+
+    private val _isPasswordCreated = MutableLiveData<Boolean>()
+    val isPasswordCreated: LiveData<Boolean>
+    get() = _isPasswordCreated
 
     private val _isNoteLocked = MutableLiveData<Boolean>()
     val isNoteLocked: LiveData<Boolean>
@@ -28,29 +28,19 @@ class AddNoteViewModel(val note: Note, val database: NoteDao, application: Appli
 
     private val _editNoteDescription = MutableLiveData<String>()
     val editNoteDescription: LiveData<String>
-    get() = _editNoteDescription
-
-    val noteLockStatu = Transformations.map(isNoteLocked) {
-        getLockStatu(it)
-    }
-
-    private fun getLockStatu(it: Boolean): Boolean {
-        return it
-    }
+        get() = _editNoteDescription
 
     init {
         Log.i("AddNoteViewModel", "AddNoteViewModel Created..")
-        _isNoteLocked.value = false
-        _curentTime.value = getCurentTime(java.util.Calendar.getInstance().timeInMillis)
-        if(note.noteDescription.length>0){
-            _editNoteDescription.value = note.noteDescription
-            _isNoteLocked.value = note.noteIsLocked
-        }
+        _curentTime.value =
+            getCurentTime(Calendar.getInstance().timeInMillis)
+        _editNoteDescription.value = note.noteDescription
+        _isNoteLocked.value = note.noteIsLocked
+        _isPasswordCreated.value = false
     }
 
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-
 
     fun onAddNote(description: String) {
         uiScope.launch {
@@ -64,13 +54,13 @@ class AddNoteViewModel(val note: Note, val database: NoteDao, application: Appli
         }
     }
 
-    fun onUpdateNote(description: String){
+    fun onUpdateNote(description: String) {
         uiScope.launch {
             note.noteDescription = description
             note.noteTitle = getNoteTitleFromDescription(description)
             note.noteLastEdit = java.util.Calendar.getInstance().timeInMillis
             note.noteIsLocked = _isNoteLocked.value!!
-            withContext(Dispatchers.IO){
+            withContext(Dispatchers.IO) {
                 database.update(note)
             }
         }

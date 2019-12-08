@@ -41,8 +41,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
 
-    implementation 'com.google.android.material:material:1.2.0-alpha02'
-
+    implementation 'com.google.android.material:material:1.1.0-alpha04'
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
     // Room components
     implementation 'android.arch.persistence.room:runtime:1.0.0'
     kapt 'android.arch.persistence.room:compiler:1.0.0'
