@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -107,7 +108,8 @@ class AddNoteActivity : AppCompatActivity() {
                 return@setOnClickListener
             } else {
                 notePreference.setPassword(password)
-                openInfoDialog(this, getString(R.string.password_created), getString(R.string.password))
+                Toast.makeText(this,getString(R.string.password_created),Toast.LENGTH_SHORT).show()
+                viewModel.lockNoteClicked()
             }
             dialog.dismiss()
         }

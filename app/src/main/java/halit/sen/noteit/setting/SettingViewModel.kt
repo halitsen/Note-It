@@ -5,13 +5,24 @@ import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
 import halit.sen.noteit.changePassword.ChangePasswordActivity
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import halit.sen.noteit.R
+import halit.sen.noteit.database.NoteDao
+import halit.sen.noteit.main.NoteActivity
+import kotlinx.coroutines.*
 
 
-class SettingViewModel(application: Application) : AndroidViewModel(application){
+class SettingViewModel(val database: NoteDao, application: Application) : AndroidViewModel(application){
 
     private val context = getApplication<Application>().applicationContext
+
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+    init {
+
+    }
 
     fun onChangePassLayoutClicked(){
         val intent = Intent(context,ChangePasswordActivity::class.java)
@@ -49,5 +60,21 @@ class SettingViewModel(application: Application) : AndroidViewModel(application)
     fun onDonateClicked(){
         //reklam ekleyene kadar ödemeyi ekleme..
         // todo pay 2$ to remove the add...
+    }
+    fun deleteAllNotes(){
+
+        uiScope.launch {
+            withContext(Dispatchers.IO) {
+                database.clear()
+            }
+        }
+        Toast.makeText(context,"Clear..", Toast.LENGTH_SHORT).show()
+        val intent = Intent(context, NoteActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        context.startActivity(intent)
+    }
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

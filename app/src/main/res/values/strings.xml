@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Note It</string>
-    <string name="empty_note_placeholder_text">You don\'t have any note yet. \nUse plus (+) button below to take a note.</string>
+    <string name="empty_note_placeholder_text">You didn\'t have any note yet. \nUse plus (+) button below to take a note.</string>
     <string name="settings">Settings</string>
     <string name="change_password">Change Password</string>
     <string name="night_mode">Night Mode</string>
@@ -17,7 +17,7 @@
     <string name="text_plain">text/plain</string>
     <string name="share">Share</string>
     <string name="delete">Delete</string>
-    <string name="delete_all_notes">Delete All Notes</string>
+    <string name="delete_all_notes">Clear All Notes</string>
     <string name="understood">Understood</string>
     <string name="create_password">Create Password</string>
     <string name="pass_empty_warning">You can\'t leave your password empty</string>
@@ -26,9 +26,13 @@
     <string name="password">Password</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="cancel">Cancel</string>
-    <string name="ok">Ok</string>
-    <string name="password_again">Password Again :</string>
-    <string name="encyption_info">You need to create a password.  To create encrypted notes.</string>
+    <string name="ok">OK</string>
+    <string name="password_again">Password Again</string>
+    <string name="encyption_info">Create a password.\nFor your encrypted notes.</string>
     <string name="encrypted_notes">Encrypted Notes</string>
-    <string name="wron_pass_warning">Wrong Password, please try again,,</string>
+    <string name="wron_pass_warning">Wrong Password, please try again.</string>
+    <string name="set_password_yet">You didn\'t set a password yet.</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="new_password_again">New Password Again</string>
 </resources>

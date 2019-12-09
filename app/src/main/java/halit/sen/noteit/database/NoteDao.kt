@@ -28,4 +28,6 @@ interface NoteDao {
     @Query("SELECT * from note_table WHERE noteId = :key")
     fun getNightWithId(key: Long): LiveData<Note>
 
+    @Query("DELETE FROM note_table")
+    fun clear()
 }
