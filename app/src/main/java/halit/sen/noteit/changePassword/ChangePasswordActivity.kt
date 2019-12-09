@@ -21,9 +21,6 @@ class ChangePasswordActivity : AppCompatActivity() {
         binding.changePasswordViewModel = viewModel
         binding.setLifecycleOwner(this)
 
-        //todo eski şifreyi sharedpreferens daki şifre ile karşılaştıracam yeni şifreleri de birbiri ile karşılaştıracam.
-        //todo tüm notları silmek istediğimde de şifre sorsun eğer şifre kurmuşsa, kumamışsa sormadan silsin.
-
         binding.changePassBackIcon.setOnClickListener {
             finish()
         }
