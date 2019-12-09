@@ -46,7 +46,7 @@ class AddNoteActivity : AppCompatActivity() {
         setSupportActionBar(binding.addNoteToolbar);
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
-         notePreference = SharedPreference(this)
+        notePreference = SharedPreference(this)
         binding.addNoteBackIcon.setOnClickListener {
             finish()
         }
@@ -73,6 +73,24 @@ class AddNoteActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.save -> {
+                if (binding.noteDescription.text.toString().length > 0) {
+                    if (note.noteDescription.length == 0) {
+                        viewModel.onAddNote(binding.noteDescription.text.toString().trim())
+                    } else {
+                        viewModel.onUpdateNote(binding.noteDescription.text.toString().trim())
+                    }
+                }
+                finish()
+            }
+            R.id.share ->{viewModel.shareNote(binding.noteDescription.text.trim().toString())}
+            R.id.delete -> {viewModel.deleteNote()}
+
+        }
+
+
         if (item.itemId == R.id.save) {
             if (binding.noteDescription.text.toString().length > 0) {
                 if (note.noteDescription.length == 0) {
@@ -84,6 +102,8 @@ class AddNoteActivity : AppCompatActivity() {
 
             finish()
         }
+
+
         return super.onOptionsItemSelected(item)
     }
 
@@ -101,14 +121,23 @@ class AddNoteActivity : AppCompatActivity() {
             val password = dialogBinding.passEditText.text.trim().toString()
             val passwordAgain = dialogBinding.passAgainEditText.text.trim().toString()
             if (TextUtils.isEmpty(password) || TextUtils.isEmpty(passwordAgain)) {
-                openInfoDialog(this, getString(R.string.pass_empty_warning), getString(R.string.password))
+                openInfoDialog(
+                    this,
+                    getString(R.string.pass_empty_warning),
+                    getString(R.string.password)
+                )
                 return@setOnClickListener
             } else if (!password.equals(passwordAgain)) {
-                openInfoDialog(this, getString(R.string.pass_match_warning), getString(R.string.password))
+                openInfoDialog(
+                    this,
+                    getString(R.string.pass_match_warning),
+                    getString(R.string.password)
+                )
                 return@setOnClickListener
             } else {
                 notePreference.setPassword(password)
-                Toast.makeText(this,getString(R.string.password_created),Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.password_created), Toast.LENGTH_SHORT)
+                    .show()
                 viewModel.lockNoteClicked()
             }
             dialog.dismiss()
