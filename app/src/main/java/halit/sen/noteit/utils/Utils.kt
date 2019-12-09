@@ -2,7 +2,9 @@ package halit.sen.noteit.utils
 
 import android.app.ProgressDialog.show
 import android.content.Context
+import android.content.Intent
 import com.afollestad.materialdialogs.MaterialDialog
+import halit.sen.noteit.main.NoteActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -35,4 +37,11 @@ fun openInfoDialog(context: Context, content: String, title: String) {
         .show()
     dialog.titleView.textSize = 16f
     dialog.contentView!!.textSize = 14f
+}
+
+fun restart(context: Context){
+
+    val intent = Intent(context, NoteActivity::class.java)
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+    context.startActivity(intent)
 }
