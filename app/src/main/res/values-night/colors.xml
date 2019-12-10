@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="mainColor">#272F3F</color>
+    <color name="white">#FFFFFF</color>
+    <color name="darkMainColor">#242b3b</color>
+    <color name="gray">#4D4D4D</color>
+    <color name="black">#000000</color>
+
+
+    <color name="dayNightBackground">#FF2E394B</color>
+    <color name="editTextHintColor">#C6898E9B</color>
+    <color name="timeText">#888888</color>
+    <color name="mainTextColor">#fff</color>
+    <color name="dayNightGray">#C5C5C5</color>
+
+</resources>

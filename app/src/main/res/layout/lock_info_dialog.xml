@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/dayNightBackground">
 
 
         <TextView
@@ -16,7 +16,7 @@
             android:gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:textColor="@color/darkMainPrimaryColor"
+            android:textColor="@color/mainTextColor"
             android:layout_marginTop="20dp"
             android:text="@string/encrypted_notes"
             android:textSize="18sp"
@@ -32,7 +32,7 @@
             android:layout_marginLeft="10dp"
             android:layout_below="@id/lock_title"
             android:layout_marginRight="10dp"
-            android:textColor="@color/darkMainPrimaryColor"
+            android:textColor="@color/mainTextColor"
             android:layout_marginTop="20dp"
             android:text="@string/encyption_info"
             android:textSize="16sp"
@@ -47,6 +47,7 @@
             android:paddingRight="30dp"
             android:layout_marginTop="36dp"
             android:layout_below="@id/lock_info"
+            android:background="@color/dayNightBackground"
             android:paddingLeft="30dp">
 
             <EditText
@@ -59,7 +60,7 @@
                 android:textSize="16sp"
                 android:background="@android:color/transparent"
                 android:layout_marginLeft="12dp"
-                android:textColor="@color/darkMainPrimaryColor"
+                android:textColor="@color/mainTextColor"
                 app:fontFamily="sans-serif" />
 
             <EditText
@@ -74,7 +75,7 @@
                 android:layout_marginTop="16dp"
                 android:textSize="16sp"
                 android:layout_marginLeft="12dp"
-                android:textColor="@color/darkMainPrimaryColor"
+                android:textColor="@color/mainTextColor"
                 app:fontFamily="sans-serif" />
 
         </LinearLayout>
@@ -91,8 +92,10 @@
             android:layout_marginTop="24dp"
             android:layout_gravity="center_horizontal"
             android:textSize="17sp"
-            android:textColor="@color/darkMainPrimaryColor"
+            android:textColor="@color/mainTextColor"
             app:fontFamily="sans-serif" />
+
+        <!-- todo butona day night-->
 
     </RelativeLayout>
 </layout>

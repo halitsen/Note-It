@@ -24,7 +24,7 @@ fun displayNoteInList(note: String): String {
     return when (note.length) {
         in 0..10 -> note
         in 11..20 -> note.substring(0, 10) + "..."
-        else -> note.substring(0,15) + "..."
+        else -> note.substring(0, 15) + "..."
     }
 }
 
@@ -39,9 +39,20 @@ fun openInfoDialog(context: Context, content: String, title: String) {
     dialog.contentView!!.textSize = 14f
 }
 
-fun restart(context: Context){
+fun restart(context: Context) {
 
     val intent = Intent(context, NoteActivity::class.java)
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
     context.startActivity(intent)
+}
+
+fun isNightModeActive(preference: SharedPreference): Boolean {
+
+    return when (preference.getMode()) {
+
+        "day" -> false
+        "night" -> true
+        else -> false
+    }
+
 }

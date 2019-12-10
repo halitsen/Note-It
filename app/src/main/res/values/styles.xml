@@ -1,12 +1,19 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/darkMainPrimaryColor</item>
-        <item name="colorPrimaryDark">@color/darkMainPrimaryColor</item>
-        <item name="colorAccent">@color/mainPrimaryColor</item>
+        <item name="colorPrimary">@color/darkMainColor</item>
+        <item name="colorPrimaryDark">@color/darkMainColor</item>
+        <item name="colorAccent">@color/white</item>
         <item name="android:textColorSecondary">@color/white</item>
+        <item name="actionOverflowButtonStyle">@style/MyOverflowIconStyle</item>
+
+    </style>
+
+
+    <style name="MyOverflowIconStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">#ffffff</item>
     </style>
 
 </resources>
