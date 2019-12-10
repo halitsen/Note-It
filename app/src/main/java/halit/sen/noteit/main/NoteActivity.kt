@@ -8,7 +8,6 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import halit.sen.noteit.databinding.ActivityNoteBinding
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,19 +26,15 @@ class NoteActivity : AppCompatActivity() {
     private lateinit var database: NoteDatabase
     var note: Note = Note()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_note)
         notePreference = SharedPreference(this)
-
         if(isNightModeActive(notePreference)){
-            //todo night mode u live data ya almayı dene ??
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }else{
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
-
         val application = requireNotNull(this).application
         val dataSource = NoteDatabase.getInstance(application).noteDao
         val viewModelFactory = NoteViewModelFactory(dataSource, application)
@@ -69,10 +64,6 @@ class NoteActivity : AppCompatActivity() {
         binding.fab.setOnClickListener {
             viewModel.onAddNoteClicked()
         }
-
-        binding.noteList.setOnClickListener {
-            Toast.makeText(this,"item clicked",Toast.LENGTH_SHORT).show()
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -86,5 +77,4 @@ class NoteActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
 }

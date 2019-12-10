@@ -5,12 +5,11 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/darkMainColor</item>
         <item name="colorPrimaryDark">@color/darkMainColor</item>
-        <item name="colorAccent">@color/white</item>
-        <item name="android:textColorSecondary">@color/white</item>
+        <item name="colorAccent">@color/mainTextColor</item>
+        <item name="android:textColorSecondary">@color/mainTextColor</item>
         <item name="actionOverflowButtonStyle">@style/MyOverflowIconStyle</item>
 
     </style>
-
 
     <style name="MyOverflowIconStyle" parent="Widget.AppCompat.ActionButton.Overflow">
         <item name="android:tint">#ffffff</item>

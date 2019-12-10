@@ -23,15 +23,10 @@ class NoteViewModel(val database: NoteDao,
 
     private var viewModelJob = Job()
     init {
-        Log.i("NoteViewModel", "NoteViewModel created.")
     }
-
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    private var note = MutableLiveData<Note>()
 
     override fun onCleared() {
         super.onCleared()
-        Log.i("NoteViewModel", "NoteViewModel destroyed.")
         viewModelJob.cancel()
     }
 

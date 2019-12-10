@@ -36,7 +36,6 @@ class AddNoteViewModel(val note: Note, val database: NoteDao, application: Appli
         get() = _editNoteDescription
 
     init {
-        Log.i("AddNoteViewModel", "AddNoteViewModel Created..")
         _curentTime.value =
             getCurentTime(Calendar.getInstance().timeInMillis)
         _editNoteDescription.value = note.noteDescription
@@ -74,7 +73,6 @@ class AddNoteViewModel(val note: Note, val database: NoteDao, application: Appli
     fun deleteNote(){
         uiScope.launch {
             withContext(Dispatchers.IO){
-                //todo eğer not yoksa (add note dan gelmişse) patlayabilir
                 database.deleteNote(note)
             }
         }
@@ -83,13 +81,13 @@ class AddNoteViewModel(val note: Note, val database: NoteDao, application: Appli
 
     fun shareNote(note: String){
         if(TextUtils.isEmpty(note) || note.equals("")){
-            Toast.makeText(context,"You don't have a note to share", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,context.getString(R.string.dont_have_note_warning), Toast.LENGTH_SHORT).show()
         }else{
             val intent = Intent()
             intent.action = Intent.ACTION_SEND
             intent.putExtra(Intent.EXTRA_TEXT, note)
             intent.type=(context.getString(R.string.text_plain))
-            context.startActivity(Intent.createChooser(intent, "Send Note"))
+            context.startActivity(Intent.createChooser(intent, context.getString(R.string.send_note)))
         }
     }
 
@@ -99,7 +97,6 @@ class AddNoteViewModel(val note: Note, val database: NoteDao, application: Appli
 
     override fun onCleared() {
         super.onCleared()
-        Log.i("AddNoteViewModel", "AddNoteViewModel Destroyed..")
         viewModelJob.cancel()
     }
 }

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/dayNightBackground">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp"
+        android:padding="2dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/delete_all_notes"
+        android:textColor="@color/mainTextColor"
+        app:fontFamily="sans-serif-medium"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp"
+        app:fontFamily="sans-serif-light"
+        android:textSize="16sp"
+        android:textColorHint="@color/mainTextColor"
+        android:layout_marginRight="12dp"
+        android:text="@string/sure_to_delete_notes" />
+
+    <RelativeLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/text">
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/okey"
+            android:text="@string/cancel"
+            app:fontFamily="sans-serif"
+            android:gravity="center"
+            android:padding="8dp"
+            android:layout_marginRight="12dp"
+            android:textColor="@color/mainTextColor"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/okey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="12dp"
+            android:text="@string/ok"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="@color/mainTextColor"
+            android:textSize="15sp" />
+    </RelativeLayout>
+</RelativeLayout>

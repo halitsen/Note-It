@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Not Et</string>
+    <string name="empty_note_placeholder_text">Henüz not oluştrmadınız. \nArtı(+) butonu ile ilk notunuzu oluşturun.</string>
+    <string name="settings">Ayarlar</string>
+    <string name="change_password">Şifre Değiştir</string>
+    <string name="night_mode">Gece Modu</string>
+    <string name="contact">İletişim</string>
+    <string name="share_with_friends">Arkadaşlarınla Paylaş</string>
+    <string name="rate_us">Oy Ver</string>
+    <string name="donate">Bağış Yap</string>
+    <string name="owner_mail">sen.halitt@gmail.com</string>
+    <string name="mailto">mailto:</string>
+    <string name="send_email">Eposta Gönder..</string>
+    <string name="no_mail_client">Yüklü mail uygulaması bulunamadı.</string>
+    <string name="share_app_url">Hey!!! Uygulamaya bir göz atsana: https://play.google.com/store/apps/details?id=com.halitsen.bitcurrency</string>
+    <string name="playstore_url">https://play.google.com/store/apps/details?id=com.halitsen.bitcurrency</string>
+    <string name="text_plain">text/plain</string>
+    <string name="share">Paylaş..</string>
+    <string name="share2">Paylaş</string>
+    <string name="delete">Sil</string>
+    <string name="delete_all_notes">Tüm Notları Sil</string>
+    <string name="understood">Anlaşıldı</string>
+    <string name="create_password">Şifre Oluştur</string>
+    <string name="pass_empty_warning">Şifreni boş bırakamazsın..</string>
+    <string name="pass_match_warning">Şifreleriniz eşleşmiyor.!</string>
+    <string name="password_created">Şifreniz oluşturuldu.</string>
+    <string name="password">Şifre</string>
+    <string name="enter_your_password">Şifrenizi Girin</string>
+    <string name="cancel">İptal</string>
+    <string name="ok">OK</string>
+    <string name="password_again">Şifre Tekrar</string>
+    <string name="encyption_info">Şifreli not oluşturmak için,\nŞifre oluştur.</string>
+    <string name="encrypted_notes">Şifreli Notlar</string>
+    <string name="wron_pass_warning">Yanlış şifre, lütfen tekrar deneyin.</string>
+    <string name="set_password_yet">Henüz bir şifre oluşturmadınız.</string>
+    <string name="old_password">Eski Şifre</string>
+    <string name="new_password">Yeni Şifre</string>
+    <string name="new_password_again">Yeni Şifre Tekrar</string>
+    <string name="sure_to_delete_notes">Tüm notları silmek istediğinizden emin misiniz? ?</string>
+    <string name="clear">Silindi..</string>
+    <string name="dont_have_note_warning">Boş not paylaşamazsınız.</string>
+    <string name="send_note">Not Gönder..</string>
+    <string name="password_empty">Şifrenizi Boş Bırakamazsınız.</string>
+    <string name="check_you_pass">şifrenizi kontol edin.</string>
+    <string name="password_changed">Şifreniz değişti..</string>
+    <string name="night_mode_active">Night mode active</string>
+    <string name="day_mode_active">Gündüz modu aktif</string>
+    <string name="description_placeholder">açıklama</string>
+    <string name="date_placeholder">23-32-2019</string>
+</resources>
