@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="mainPrimaryColor">#FF2E394B</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="mainColor">#FF2E394B</color>
     <color name="white">#FFFFFF</color>
-    <color name="darkMainPrimaryColor">#242b3b</color>
-    <color name="red">#E91E63</color>
-    <color name="green">#0ffc0c</color>
+    <color name="darkMainColor">#242b3b</color>
     <color name="gray">#4D4D4D</color>
-    <color name="twitterBlue">#00acee</color>
     <color name="black">#000000</color>
+
+    <color name="dayNightBackground">#FFFFFF</color>
+    <color name="editTextHintColor">#C6596581</color>
+    <color name="timeText">#fff</color>
+    <color name="mainTextColor">#FF2E394B</color>
+    <color name="dayNightGray">#5F5F5F</color>
+
+
 </resources>

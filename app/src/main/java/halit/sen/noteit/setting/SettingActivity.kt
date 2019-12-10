@@ -5,8 +5,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import halit.sen.noteit.R
@@ -22,7 +25,9 @@ import halit.sen.noteit.main.NoteListAdapter
 import halit.sen.noteit.main.NoteViewModel
 import halit.sen.noteit.main.NoteViewModelFactory
 import halit.sen.noteit.utils.SharedPreference
+import halit.sen.noteit.utils.isNightModeActive
 import halit.sen.noteit.utils.openInfoDialog
+import halit.sen.noteit.utils.restart
 
 class SettingActivity : AppCompatActivity() {
 
@@ -33,6 +38,18 @@ class SettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_setting)
+
+
+        notePreference = SharedPreference(this)
+
+        if(isNightModeActive(notePreference)){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            binding.nightModeSwitch.isChecked = true
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            binding.nightModeSwitch.isChecked = false
+        }
+
         val application = requireNotNull(this).application
         val datasource = NoteDatabase.getInstance(application).noteDao
         val viewModelFactory = SettingViewModelFactory(datasource, application)
@@ -71,8 +88,26 @@ class SettingActivity : AppCompatActivity() {
         binding.donateLayout.setOnClickListener {
             viewModel.onDonateClicked()
         }
-    }
 
+        binding.nightModeSwitch.setOnCheckedChangeListener { compoundButton, isChecked ->
+
+            if(isChecked){
+                Toast.makeText(this,"Night mode active",Toast.LENGTH_SHORT).show()
+                notePreference.setMode("night")
+                Handler().postDelayed({
+                    refresh()
+                }, 500)
+
+            }else{
+                Toast.makeText(this,"Day mode active",Toast.LENGTH_SHORT).show()
+                notePreference.setMode("day")
+                Handler().postDelayed({
+                    refresh()
+                }, 500)
+            }
+        }
+
+    }
 
     fun getPasswordDialog() {
 
@@ -104,6 +139,12 @@ class SettingActivity : AppCompatActivity() {
             }
         }
         dialog.show()
+    }
+
+    fun refresh(){
+        val intent = Intent(this, SettingActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
     }
 
 }

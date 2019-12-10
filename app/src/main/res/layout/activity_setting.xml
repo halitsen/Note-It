@@ -12,14 +12,14 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/dayNightBackground"
     tools:context=".setting.SettingActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/setting_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/mainPrimaryColor"
+        android:background="@color/mainColor"
         android:gravity="center_horizontal"
         android:layout_alignParentTop="true">
 
@@ -49,6 +49,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/dayNightBackground"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -56,6 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:paddingRight="30dp"
+            android:background="@color/dayNightBackground"
             android:clickable="true"
             android:focusable="true"
             android:paddingLeft="30dp">
@@ -67,7 +69,7 @@
                 android:layout_centerVertical="true"
                 android:textSize="17sp"
                 android:layout_alignParentLeft="true"
-                android:textColor="@color/darkMainPrimaryColor"
+                android:textColor="@color/mainTextColor"
                 app:fontFamily="sans-serif"/>
 
             <ImageView
@@ -85,7 +87,7 @@
             android:layout_height="0.25dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:background="@color/darkMainPrimaryColor">
+            android:background="@color/mainTextColor">
         </View>
 
         <RelativeLayout
@@ -94,6 +96,7 @@
             android:layout_height="80dp"
             android:paddingRight="30dp"
             android:clickable="true"
+            android:background="@color/dayNightBackground"
             android:focusable="true"
             android:paddingLeft="30dp">
 
@@ -104,7 +107,7 @@
                 android:layout_centerVertical="true"
                 android:textSize="17sp"
                 android:layout_alignParentLeft="true"
-                android:textColor="@color/darkMainPrimaryColor"
+                android:textColor="@color/mainTextColor"
                 app:fontFamily="sans-serif"/>
 
             <androidx.appcompat.widget.SwitchCompat
@@ -114,7 +117,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:checked="false"
-                app:thumbTint="@color/darkMainPrimaryColor">
+                app:thumbTint="@color/mainTextColor">
             </androidx.appcompat.widget.SwitchCompat>
 
         </RelativeLayout>
@@ -124,7 +127,7 @@
             android:layout_height="0.25dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:background="@color/darkMainPrimaryColor">
+            android:background="@color/mainTextColor">
         </View>
 
         <RelativeLayout
@@ -133,6 +136,7 @@
             android:layout_height="80dp"
             android:paddingRight="30dp"
             android:clickable="true"
+            android:background="@color/dayNightBackground"
             android:focusable="true"
             android:paddingLeft="30dp">
 
@@ -143,7 +147,7 @@
                 android:layout_centerVertical="true"
                 android:textSize="17sp"
                 android:layout_alignParentLeft="true"
-                android:textColor="@color/darkMainPrimaryColor"
+                android:textColor="@color/mainTextColor"
                 app:fontFamily="sans-serif"/>
 
             <ImageView
@@ -161,7 +165,7 @@
             android:layout_height="0.25dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:background="@color/darkMainPrimaryColor">
+            android:background="@color/mainTextColor">
         </View>
 
         <RelativeLayout
@@ -171,6 +175,7 @@
             android:paddingRight="30dp"
             android:paddingLeft="30dp"
             android:clickable="true"
+            android:background="@color/dayNightBackground"
             android:focusable="true">
 
             <TextView
@@ -180,7 +185,7 @@
                 android:layout_centerVertical="true"
                 android:textSize="17sp"
                 android:layout_alignParentLeft="true"
-                android:textColor="@color/darkMainPrimaryColor"
+                android:textColor="@color/mainTextColor"
                 app:fontFamily="sans-serif"/>
 
             <ImageView
@@ -198,7 +203,7 @@
             android:layout_height="0.25dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:background="@color/darkMainPrimaryColor">
+            android:background="@color/mainTextColor">
 
         </View>
 
@@ -207,6 +212,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:paddingRight="30dp"
+            android:background="@color/dayNightBackground"
             android:paddingLeft="30dp"
             android:clickable="true"
             android:focusable="true">
@@ -218,7 +224,7 @@
                 android:layout_centerVertical="true"
                 android:textSize="17sp"
                 android:layout_alignParentLeft="true"
-                android:textColor="@color/darkMainPrimaryColor"
+                android:textColor="@color/mainTextColor"
                 app:fontFamily="sans-serif"/>
 
             <ImageView
@@ -235,7 +241,7 @@
             android:layout_height="0.25dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:background="@color/darkMainPrimaryColor">
+            android:background="@color/mainTextColor">
         </View>
 
         <RelativeLayout
@@ -243,6 +249,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:paddingRight="30dp"
+            android:background="@color/dayNightBackground"
             android:paddingLeft="30dp"
             android:clickable="true"
             android:focusable="true">
@@ -254,7 +261,7 @@
                 android:layout_centerVertical="true"
                 android:textSize="17sp"
                 android:layout_alignParentLeft="true"
-                android:textColor="@color/darkMainPrimaryColor"
+                android:textColor="@color/mainTextColor"
                 app:fontFamily="sans-serif"/>
 
             <ImageView
@@ -271,7 +278,7 @@
             android:layout_height="0.25dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:background="@color/darkMainPrimaryColor">
+            android:background="@color/mainTextColor">
         </View>
 
         <RelativeLayout
@@ -280,6 +287,7 @@
             android:layout_height="80dp"
             android:paddingRight="30dp"
             android:paddingLeft="30dp"
+            android:background="@color/dayNightBackground"
             android:clickable="true"
             android:focusable="true">
 
@@ -290,7 +298,7 @@
                 android:layout_centerVertical="true"
                 android:textSize="17sp"
                 android:layout_alignParentLeft="true"
-                android:textColor="@color/darkMainPrimaryColor"
+                android:textColor="@color/mainTextColor"
                 app:fontFamily="sans-serif"/>
 
             <ImageView
@@ -308,7 +316,7 @@
             android:layout_height="0.25dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:background="@color/darkMainPrimaryColor">
+            android:background="@color/mainTextColor">
         </View>
 
     </LinearLayout>

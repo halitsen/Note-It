@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -17,6 +18,7 @@ import halit.sen.noteit.database.NoteDatabase
 import halit.sen.noteit.databinding.ActivityAddNoteBinding
 import halit.sen.noteit.databinding.LockInfoDialogBinding
 import halit.sen.noteit.utils.SharedPreference
+import halit.sen.noteit.utils.isNightModeActive
 import halit.sen.noteit.utils.openInfoDialog
 
 class AddNoteActivity : AppCompatActivity() {
@@ -32,6 +34,12 @@ class AddNoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_note)
+        notePreference = SharedPreference(this)
+        if(isNightModeActive(notePreference)){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
         val application = requireNotNull(this).application
         val datasource = NoteDatabase.getInstance(application).noteDao
         val bundle: Bundle? = intent.extras
@@ -87,23 +95,7 @@ class AddNoteActivity : AppCompatActivity() {
             }
             R.id.share ->{viewModel.shareNote(binding.noteDescription.text.trim().toString())}
             R.id.delete -> {viewModel.deleteNote()}
-
         }
-
-
-        if (item.itemId == R.id.save) {
-            if (binding.noteDescription.text.toString().length > 0) {
-                if (note.noteDescription.length == 0) {
-                    viewModel.onAddNote(binding.noteDescription.text.toString().trim())
-                } else {
-                    viewModel.onUpdateNote(binding.noteDescription.text.toString().trim())
-                }
-            }
-
-            finish()
-        }
-
-
         return super.onOptionsItemSelected(item)
     }
 

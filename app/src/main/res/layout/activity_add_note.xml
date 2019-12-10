@@ -13,7 +13,7 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/dayNightBackground"
     tools:context=".addNote.AddNoteActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:theme="@style/AppTheme"
         android:layout_height="50dp"
-        android:background="@color/mainPrimaryColor"
+        android:background="@color/mainColor"
         android:gravity="center_horizontal"
         android:layout_alignParentTop="true">
 
@@ -42,18 +42,10 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <Button
-        android:id="@+id/add_note_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Note"
-        android:layout_centerInParent="true"
-        android:visibility="gone">
-
-    </Button>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/dayNightBackground"
         android:layout_below="@id/add_note_toolbar">
 
         <RelativeLayout
@@ -62,6 +54,7 @@
             android:layout_height="45dp"
             android:layout_marginTop="12dp"
             android:layout_marginLeft="12dp"
+            android:background="@color/dayNightBackground"
             android:layout_marginRight="12dp"
             android:layout_alignParentTop="true">
 
@@ -73,7 +66,7 @@
                 app:fontFamily="sans-serif-light"
                 android:layout_alignParentLeft="true"
                 android:textSize="14sp"
-                android:textColor="@color/gray"
+                android:textColor="@color/dayNightGray"
                 android:text="@{addNoteViewModel.curentTime}">
 
             </TextView>
@@ -98,11 +91,12 @@
             android:layout_marginTop="12dp"
             android:textCursorDrawable="@drawable/cursor_color"
             android:hint="@string/app_name"
+            android:textColorHint="@color/editTextHintColor"
             android:textSize="17sp"
             app:fontFamily="sans-serif"
             android:text="@{addNoteViewModel.editNoteDescription}"
             android:background="@null"
-            android:textColor="@color/darkMainPrimaryColor"
+            android:textColor="@color/mainTextColor"
             android:paddingRight="12dp"
             android:paddingLeft="12dp"
             android:paddingBottom="12dp">

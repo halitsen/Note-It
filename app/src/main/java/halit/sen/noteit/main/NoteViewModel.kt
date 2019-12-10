@@ -8,6 +8,8 @@ import halit.sen.noteit.addNote.AddNoteActivity
 import halit.sen.noteit.database.Note
 import halit.sen.noteit.database.NoteDao
 import halit.sen.noteit.setting.SettingActivity
+import halit.sen.noteit.utils.SharedPreference
+import halit.sen.noteit.utils.isNightModeActive
 import kotlinx.coroutines.*
 
 class NoteViewModel(val database: NoteDao,

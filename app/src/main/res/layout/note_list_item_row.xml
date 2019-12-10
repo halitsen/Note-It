@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:paddingBottom="8dp"
+    android:background="@color/dayNightBackground"
     android:paddingTop="8dp"
     android:paddingRight="12dp"
     android:paddingLeft="12dp"
@@ -21,7 +22,7 @@
         android:maxLines="1"
         android:layout_marginRight="12dp"
         android:layout_marginTop="12dp"
-        android:textColor="@color/black">
+        android:textColor="@color/mainTextColor">
 
     </TextView>
 
@@ -34,7 +35,7 @@
         android:fontFamily="sans-serif-light"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:textColor="@color/black">
+        android:textColor="@color/mainTextColor">
 
     </TextView>
 
@@ -52,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/darkMainPrimaryColor">
+        android:background="@color/mainTextColor">
 
     </View>
 

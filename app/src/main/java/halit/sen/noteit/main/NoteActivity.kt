@@ -9,16 +9,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import halit.sen.noteit.databinding.ActivityNoteBinding
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import halit.sen.noteit.R
 import halit.sen.noteit.database.Note
 import halit.sen.noteit.database.NoteDatabase
+import halit.sen.noteit.utils.SharedPreference
+import halit.sen.noteit.utils.isNightModeActive
 
 class NoteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNoteBinding
     private lateinit var viewModel: NoteViewModel
+    private lateinit var notePreference: SharedPreference
 
     private lateinit var database: NoteDatabase
     var note: Note = Note()
@@ -27,6 +31,15 @@ class NoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_note)
+        notePreference = SharedPreference(this)
+
+        if(isNightModeActive(notePreference)){
+            //todo night mode u live data ya almayı dene ??
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
         val application = requireNotNull(this).application
         val dataSource = NoteDatabase.getInstance(application).noteDao
         val viewModelFactory = NoteViewModelFactory(dataSource, application)
@@ -37,7 +50,7 @@ class NoteActivity : AppCompatActivity() {
         val adapter = NoteListAdapter()
         binding.noteList.adapter = adapter
         binding.noteToolbar
-        setSupportActionBar(binding.noteToolbar);
+        setSupportActionBar(binding.noteToolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         binding.noteList.layoutManager =
@@ -73,7 +86,5 @@ class NoteActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 
 }
