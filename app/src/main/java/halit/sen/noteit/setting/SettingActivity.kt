@@ -1,7 +1,7 @@
 package halit.sen.noteit.setting
 
 import android.app.Dialog
-import android.content.Context
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,21 +13,12 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import halit.sen.noteit.R
-import halit.sen.noteit.addNote.AddNoteActivity
-import halit.sen.noteit.addNote.AddNoteViewModelFactory
-import halit.sen.noteit.changePassword.ChangePasswordActivity
-import halit.sen.noteit.changePassword.ChangePasswordViewModel
-import halit.sen.noteit.database.Note
 import halit.sen.noteit.database.NoteDatabase
 import halit.sen.noteit.databinding.ActivitySettingBinding
 import halit.sen.noteit.main.NoteActivity
-import halit.sen.noteit.main.NoteListAdapter
-import halit.sen.noteit.main.NoteViewModel
-import halit.sen.noteit.main.NoteViewModelFactory
 import halit.sen.noteit.utils.SharedPreference
 import halit.sen.noteit.utils.isNightModeActive
 import halit.sen.noteit.utils.openInfoDialog
-import halit.sen.noteit.utils.restart
 
 class SettingActivity : AppCompatActivity() {
 
@@ -59,6 +50,7 @@ class SettingActivity : AppCompatActivity() {
         notePreference = SharedPreference(this)
 
         binding.settingBackIcon.setOnClickListener {
+            startActivity(Intent(this,NoteActivity::class.java))
             finish()
         }
         binding.changePassLayout.setOnClickListener {
@@ -83,30 +75,29 @@ class SettingActivity : AppCompatActivity() {
             viewModel.onShareClicked()
         }
         binding.deleteLayout.setOnClickListener {
-            getPasswordDialog()
-        }
-        binding.donateLayout.setOnClickListener {
-            viewModel.onDonateClicked()
+            if (notePreference.getPassword() != ""){
+                getPasswordDialog()
+            }else{
+                getDecisionDialog()
+            }
         }
 
         binding.nightModeSwitch.setOnCheckedChangeListener { compoundButton, isChecked ->
 
             if(isChecked){
-                Toast.makeText(this,"Night mode active",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,getString(R.string.night_mode_active),Toast.LENGTH_SHORT).show()
                 notePreference.setMode("night")
                 Handler().postDelayed({
                     refresh()
-                }, 500)
-
+                }, 200)
             }else{
-                Toast.makeText(this,"Day mode active",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,getString(R.string.day_mode_active),Toast.LENGTH_SHORT).show()
                 notePreference.setMode("day")
                 Handler().postDelayed({
                     refresh()
-                }, 500)
+                }, 200)
             }
         }
-
     }
 
     fun getPasswordDialog() {
@@ -141,10 +132,26 @@ class SettingActivity : AppCompatActivity() {
         dialog.show()
     }
 
+    fun getDecisionDialog(){
+
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.delete_notes_dialog)
+        val cancel: TextView = dialog.findViewById(R.id.cancel)
+        val okey: TextView = dialog.findViewById(R.id.okey)
+
+        cancel.setOnClickListener {
+            dialog.dismiss()
+        }
+        okey.setOnClickListener {
+            viewModel.deleteAllNotes()
+        }
+        dialog.show()
+
+    }
+
     fun refresh(){
-        val intent = Intent(this, SettingActivity::class.java)
+        val intent = Intent(this, this::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
-
 }

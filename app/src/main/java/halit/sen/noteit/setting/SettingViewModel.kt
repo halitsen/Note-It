@@ -38,8 +38,7 @@ class SettingViewModel(val database: NoteDao, application: Application) :
         intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(context.getString(R.string.owner_mail)))
         intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name))
         try {
-            context.startActivity(Intent.createChooser(intent, context.getString(R.string.send_email))
-            )
+            context.startActivity(Intent.createChooser(intent, context.getString(R.string.send_email)))
         } catch (ex: android.content.ActivityNotFoundException) {
             Toast.makeText(context, context.getString(R.string.no_mail_client), Toast.LENGTH_SHORT)
                 .show()
@@ -54,7 +53,7 @@ class SettingViewModel(val database: NoteDao, application: Application) :
             context.getString(R.string.share_app_url)
         )
         intent.type = (context.getString(R.string.text_plain))
-        context.startActivity(intent)
+        context.startActivity(Intent.createChooser(intent,context.getString(R.string.share)))
     }
 
     fun onRateClicked() {
@@ -63,19 +62,13 @@ class SettingViewModel(val database: NoteDao, application: Application) :
         context.startActivity(intent)
     }
 
-    fun onDonateClicked() {
-        //reklam ekleyene kadar ödemeyi ekleme..
-        // todo pay 2$ to remove the add...
-    }
-
     fun deleteAllNotes() {
-
         uiScope.launch {
             withContext(Dispatchers.IO) {
                 database.clear()
             }
         }
-        Toast.makeText(context, "Clear..", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, context.getString(R.string.clear), Toast.LENGTH_SHORT).show()
         restart(context)
     }
 

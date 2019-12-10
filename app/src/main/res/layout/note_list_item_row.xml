@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="8dp"
     android:background="@color/dayNightBackground"
     android:paddingTop="8dp"
     android:paddingRight="12dp"
-    android:paddingLeft="12dp"
-    >
+    android:paddingLeft="12dp">
 
     <TextView
         android:id="@+id/description_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="description"
+        android:text="@string/description_placeholder"
         android:layout_below="@id/last_edit_text"
         android:layout_toLeftOf="@+id/lock"
         android:textSize="16sp"
-        android:fontFamily="sans-serif-light"
+        app:fontFamily="sans-serif-light"
         android:maxLines="1"
         android:layout_marginRight="12dp"
         android:layout_marginTop="12dp"
@@ -30,9 +29,9 @@
         android:id="@+id/last_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="23-32-2019"
+        android:text="@string/date_placeholder"
         android:textSize="10sp"
-        android:fontFamily="sans-serif-light"
+        app:fontFamily="sans-serif-light"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:textColor="@color/mainTextColor">

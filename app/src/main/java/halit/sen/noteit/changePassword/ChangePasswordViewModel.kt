@@ -28,20 +28,20 @@ class ChangePasswordViewModel(app:Application) :AndroidViewModel(app){
     fun onChangePassButtonClicked(oldPass: String, newPass: String, newPassAgain: String){
 
         if(TextUtils.isEmpty(oldPass)){
-            openInfoDialog(context,"Password is empty","Change Password")
+            openInfoDialog(context,context.getString(R.string.password_empty),context.getString(R.string.change_password))
             return
         }else if(!notePreference.getPassword().equals(oldPass)){
-            openInfoDialog(context,"Check your password","Change Password")
+            openInfoDialog(context,context.getString(R.string.check_you_pass),context.getString(R.string.change_password))
             return
         }else if(TextUtils.isEmpty(newPass) || TextUtils.isEmpty(newPassAgain)){
-            openInfoDialog(context,"Password is empty","Change Password")
+            openInfoDialog(context,context.getString(R.string.password_empty),context.getString(R.string.change_password))
             return
         }else{
             notePreference.setPassword(newPass)
             val intent = Intent(context, SettingActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             context.startActivity(intent)
-            Toast.makeText(context,"Password Changed..",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,context.getString(R.string.password_changed),Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -12,10 +12,11 @@
     <string name="mailto">mailto:</string>
     <string name="send_email">Send Email..</string>
     <string name="no_mail_client">There are no email clients installed.</string>
-    <string name="share_app_url">Hey!!! Check out my app here: https://play.google.com/store/apps/details?id=com.halitsen.bitcurrency</string>
+    <string name="share_app_url">Hey!!! Check out this cool app here: https://play.google.com/store/apps/details?id=com.halitsen.bitcurrency</string>
     <string name="playstore_url">https://play.google.com/store/apps/details?id=com.halitsen.bitcurrency</string>
     <string name="text_plain">text/plain</string>
-    <string name="share">Share</string>
+    <string name="share">Share..</string>
+    <string name="share2">Share</string>
     <string name="delete">Delete</string>
     <string name="delete_all_notes">Clear All Notes</string>
     <string name="understood">Understood</string>
@@ -35,4 +36,15 @@
     <string name="old_password">Old Password</string>
     <string name="new_password">New Password</string>
     <string name="new_password_again">New Password Again</string>
+    <string name="sure_to_delete_notes">Are you sure to delete all notes ?</string>
+    <string name="clear">Clear..</string>
+    <string name="dont_have_note_warning">You don\'t have a note to share.</string>
+    <string name="send_note">Send Note..</string>
+    <string name="password_empty">You can\'t leave your password empty.</string>
+    <string name="check_you_pass">Check your password</string>
+    <string name="password_changed">Password Changed..</string>
+    <string name="night_mode_active">Night mode active</string>
+    <string name="day_mode_active">Day mode active</string>
+    <string name="description_placeholder">description</string>
+    <string name="date_placeholder">23-32-2019</string>
 </resources>
