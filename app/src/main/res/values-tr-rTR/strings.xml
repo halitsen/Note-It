@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Not Et</string>
-    <string name="empty_note_placeholder_text">Henüz not oluştrmadınız. \nArtı(+) butonu ile ilk notunuzu oluşturun.</string>
+    <string name="app_name">Note It</string>
+    <string name="empty_note_placeholder_text">Henüz not oluştrmadınız. \n(+) butonu ile ilk notunuzu oluşturun.</string>
     <string name="settings">Ayarlar</string>
     <string name="change_password">Şifre Değiştir</string>
     <string name="night_mode">Gece Modu</string>

@@ -19,6 +19,7 @@ import halit.sen.noteit.main.NoteActivity
 import halit.sen.noteit.utils.SharedPreference
 import halit.sen.noteit.utils.isNightModeActive
 import halit.sen.noteit.utils.openInfoDialog
+import halit.sen.noteit.utils.restart
 
 class SettingActivity : AppCompatActivity() {
 
@@ -88,13 +89,13 @@ class SettingActivity : AppCompatActivity() {
                 Toast.makeText(this,getString(R.string.night_mode_active),Toast.LENGTH_SHORT).show()
                 notePreference.setMode("night")
                 Handler().postDelayed({
-                    refresh()
+                    restart(this)
                 }, 200)
             }else{
                 Toast.makeText(this,getString(R.string.day_mode_active),Toast.LENGTH_SHORT).show()
                 notePreference.setMode("day")
                 Handler().postDelayed({
-                    refresh()
+                    restart(this)
                 }, 200)
             }
         }
@@ -146,12 +147,5 @@ class SettingActivity : AppCompatActivity() {
             viewModel.deleteAllNotes()
         }
         dialog.show()
-
-    }
-
-    fun refresh(){
-        val intent = Intent(this, this::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        startActivity(intent)
     }
 }
