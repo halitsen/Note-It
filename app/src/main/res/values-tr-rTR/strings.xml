@@ -13,8 +13,8 @@
     <string name="mailto">mailto:</string>
     <string name="send_email">Eposta Gönder..</string>
     <string name="no_mail_client">Yüklü mail uygulaması bulunamadı.</string>
-    <string name="share_app_url">Hey!!! Uygulamaya bir göz atsana: https://play.google.com/store/apps/details?id=com.halitsen.bitcurrency</string>
-    <string name="playstore_url">https://play.google.com/store/apps/details?id=com.halitsen.bitcurrency</string>
+    <string name="share_app_url">Hey!!! Uygulamaya bir göz atsana: https://play.google.com/store/apps/details?id=halit.sen.noteit</string>
+    <string name="playstore_url">https://play.google.com/store/apps/details?id=halit.sen.noteit</string>
     <string name="text_plain">text/plain</string>
     <string name="share">Paylaş..</string>
     <string name="share2">Paylaş</string>
@@ -44,7 +44,7 @@
     <string name="password_empty">Şifrenizi Boş Bırakamazsınız.</string>
     <string name="check_you_pass">şifrenizi kontol edin.</string>
     <string name="password_changed">Şifreniz değişti..</string>
-    <string name="night_mode_active">Night mode active</string>
+    <string name="night_mode_active">Gece modu aktif</string>
     <string name="day_mode_active">Gündüz modu aktif</string>
     <string name="description_placeholder">açıklama</string>
     <string name="date_placeholder">23-32-2019</string>
