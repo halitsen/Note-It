@@ -58,12 +58,13 @@ class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder>() {
         val isNoteLockedImage: ImageView = itemView.findViewById(R.id.lock)
 
         fun bind(item: Note) {
-            description.text = displayNoteInList(item.noteDescription)
             lastEdit.text = getCurentTime(item.noteLastEdit)
             if (item.noteIsLocked) {
                 isNoteLockedImage.setImageResource(R.drawable.ic_lock_close)
+                description.text = "* * * * * * * * * * * *"
             } else {
                 isNoteLockedImage.setImageResource(R.drawable.ic_lock_open)
+                description.text = displayNoteInList(item.noteDescription)
             }
         }
     }
