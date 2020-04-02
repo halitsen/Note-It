@@ -55,7 +55,7 @@ class AddNoteActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         notePreference = SharedPreference(this)
-        binding.addNoteBackIcon.setOnClickListener {
+        binding.addNoteBackImage.setOnClickListener {
             finish()
         }
         binding.lockImage.setOnClickListener { image ->

@@ -34,7 +34,7 @@
             android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/add_note_back_icon"
+            android:id="@+id/addNoteBackImage"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
@@ -72,7 +72,7 @@
             </TextView>
 
             <ImageView
-                android:id="@+id/lock_image"
+                android:id="@+id/lockImage"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_alignParentRight="true"
