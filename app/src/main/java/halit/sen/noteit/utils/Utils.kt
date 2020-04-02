@@ -46,7 +46,7 @@ fun openInfoDialog(context: Context, content: String, title: String) {
 fun restart(context: Context) {
 
     val intent = Intent(context, NoteActivity::class.java)
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     context.startActivity(intent)
 }
 
