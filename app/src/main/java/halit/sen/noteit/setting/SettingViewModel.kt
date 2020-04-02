@@ -28,6 +28,7 @@ class SettingViewModel(val database: NoteDao, application: Application) :
 
     fun onChangePassLayoutClicked() {
         val intent = Intent(context, ChangePasswordActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(intent)
     }
 
@@ -38,7 +39,11 @@ class SettingViewModel(val database: NoteDao, application: Application) :
         intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(context.getString(R.string.owner_mail)))
         intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name))
         try {
-            context.startActivity(Intent.createChooser(intent, context.getString(R.string.send_email)))
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            val chooserIntent = Intent.createChooser(intent,context.getString(R.string.send_email))
+            //context.startActivity(Intent.createChooser(intent, context.getString(R.string.send_email)))//
+            chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(chooserIntent)
         } catch (ex: android.content.ActivityNotFoundException) {
             Toast.makeText(context, context.getString(R.string.no_mail_client), Toast.LENGTH_SHORT)
                 .show()
@@ -53,12 +58,17 @@ class SettingViewModel(val database: NoteDao, application: Application) :
             context.getString(R.string.share_app_url)
         )
         intent.type = (context.getString(R.string.text_plain))
-        context.startActivity(Intent.createChooser(intent,context.getString(R.string.share)))
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        val chooserIntent = Intent.createChooser(intent,context.getString(R.string.share))
+        chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(chooserIntent)
+        //context.startActivity(Intent.createChooser(intent,context.getString(R.string.share)))
     }
 
     fun onRateClicked() {
         val uri = Uri.parse(context.getString(R.string.playstore_url))
         val intent = Intent(Intent.ACTION_VIEW, uri)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(intent)
     }
 

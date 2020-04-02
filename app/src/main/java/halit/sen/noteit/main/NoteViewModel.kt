@@ -16,7 +16,6 @@ class NoteViewModel(val database: NoteDao,
                     application: Application) : AndroidViewModel(application){
     private val context = getApplication<Application>().applicationContext
 
-
     private var _allNotes: LiveData<List<Note>> = database.getAllNotes()
     val allNotes
     get() = _allNotes
@@ -32,11 +31,13 @@ class NoteViewModel(val database: NoteDao,
 
     fun onProfileClicked(){
         val intent = Intent(context,SettingActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(intent)
     }
 
     fun onAddNoteClicked(){
         val intent = Intent(context,AddNoteActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(intent)
     }
 }

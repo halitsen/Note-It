@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import halit.sen.noteit.R
 import halit.sen.noteit.databinding.ActivityChangePasswordBinding
+import halit.sen.noteit.main.NoteViewModelFactory
 import halit.sen.noteit.utils.SharedPreference
 import halit.sen.noteit.utils.isNightModeActive
 
@@ -28,7 +29,9 @@ class ChangePasswordActivity : AppCompatActivity() {
         }else{
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
-        viewModel = ViewModelProviders.of(this).get(ChangePasswordViewModel::class.java)
+        val viewModelFactory = ChangePasswordVMFactory( application,this)
+
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ChangePasswordViewModel::class.java)
         binding.changePasswordViewModel = viewModel
         binding.setLifecycleOwner(this)
 
