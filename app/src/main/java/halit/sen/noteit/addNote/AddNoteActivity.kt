@@ -90,6 +90,8 @@ class AddNoteActivity : AppCompatActivity() {
                     } else {
                         viewModel.onUpdateNote(binding.noteDescription.text.toString().trim())
                     }
+                }else{
+                    viewModel.deleteNote()
                 }
                 finish()
             }
